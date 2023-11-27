@@ -1,5 +1,6 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, UseGuards } from '@nestjs/common';
 import RequestEventEmitter from '../../../../Core/Event/Emitter/RequestEventEmitter';
+import GraphqlAuthGuard from '../../../../Core/Security/Guard/GraphqlAuthGuard';
 import { ContextualGraphqlRequest, UseCase } from '../../../../index';
 import User from '../../Entity/User';
 import UserRepository from '../../Repository/UserRepository';
@@ -11,6 +12,7 @@ export default class GetLoggedUserUseCase implements UseCase<Promise<User>, []> 
     private readonly eventEmitter: RequestEventEmitter
   ) {}
 
+  @UseGuards(GraphqlAuthGuard)
   async handle(context: ContextualGraphqlRequest): Promise<User> {
     try {
       return { ...(await this.repository.findById(context.userId)), context };
