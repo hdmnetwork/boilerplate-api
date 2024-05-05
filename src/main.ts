@@ -1,10 +1,8 @@
 Object.assign(global, { WebSocket: require('ws') });
 import { NestFactory } from '@nestjs/core';
-import { registerEnumType } from '@nestjs/graphql';
 import { graphqlUploadExpress } from 'graphql-upload';
 import { json } from 'express';
 import { ApiModule } from './Api/ApiModule';
-import { QrCodeType } from './Api/enums';
 import { ExceptionCatcher } from './Core/ExceptionCatcher';
 import ConsoleLogger from './Core/Logging/ConsoleLogger';
 import InitializationLogger from './Core/Logging/InitializationLogger';

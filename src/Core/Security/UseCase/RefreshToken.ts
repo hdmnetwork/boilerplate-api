@@ -1,5 +1,5 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import UserRepository from '../../../Api/User/Repository/UserRepository';
+import UserRepository from '../../../Api/Repository/UserRepository';
 import { ContextualGraphqlRequest, UseCase } from '../../../index';
 import RequestEventEmitter from '../../Event/Emitter/RequestEventEmitter';
 import Authenticator from '../Service/authentication/Authenticator';
