@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../Core/Datasource/Prisma';
 import SaveUserDto from "../UseCase/User/SaveUser/SaveUserDto";
 import {ContextualGraphqlRequest} from "../../index";
+import {Prisma} from "@prisma/client";
 
 @Injectable()
 export default class UserRepository {
@@ -19,7 +20,7 @@ export default class UserRepository {
     });
   }
 
-  async saveUser(context: ContextualGraphqlRequest, dto: SaveUserDto) {
+  async saveUser(context: ContextualGraphqlRequest, dto: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>) {
     if(!dto.id) {
       return this.prisma.user.create({
         data: {
