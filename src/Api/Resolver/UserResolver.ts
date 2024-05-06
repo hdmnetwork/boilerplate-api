@@ -6,7 +6,7 @@ import { ContextualGraphqlRequest } from '../../index';
 import User from '../Entity/User';
 import GetLoggedUserUseCase from '../UseCase/User/GetLoggedUser/GetLoggedUserUseCase';
 import UseCaseFactory from '../UseCase/UseCaseFactory';
-import SaveUserDto from "../Dto/User/SaveUserDto";
+import SaveUserDto from "../UseCase/User/SaveUser/SaveUserDto";
 import SaveUserUseCase from "../UseCase/User/SaveUser/SaveUserUseCase";
 
 @Resolver(User)

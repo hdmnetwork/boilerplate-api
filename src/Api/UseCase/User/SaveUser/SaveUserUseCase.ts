@@ -2,7 +2,7 @@ import {Injectable} from "@nestjs/common";
 import {ContextualGraphqlRequest, UseCase} from "../../../../index";
 import User from "src/Api/Entity/User"
 import UserRepository from "../../../Repository/UserRepository";
-import SaveUserDto from "../../../Dto/User/SaveUserDto";
+import SaveUserDto from "./SaveUserDto";
 
 @Injectable()
 export default class SaveUserUseCase implements UseCase<Promise<User>, [dto: SaveUserDto]> {

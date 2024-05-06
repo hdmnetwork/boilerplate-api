@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../Core/Datasource/Prisma';
-import SaveUserDto from "../Dto/User/SaveUserDto";
+import SaveUserDto from "../UseCase/User/SaveUser/SaveUserDto";
 import {ContextualGraphqlRequest} from "../../index";
 
 @Injectable()
