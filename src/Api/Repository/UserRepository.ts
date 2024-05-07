@@ -20,26 +20,15 @@ export default class UserRepository {
     });
   }
 
-  async saveUser(context: ContextualGraphqlRequest, dto: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>) {
-    if(!dto.id) {
+  async saveUser(data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput> | Prisma.XOR<Prisma.UserUpdateInput, Prisma.UserUncheckedUpdateInput> ) {
+    if(!data.id) {
       return this.prisma.user.create({
-        data: {
-          email: dto.email,
-          password: dto.password,
-          firstName: dto.firstName,
-          lastName: dto.lastName,
-        }
+        data: data as Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput>
       })
     }
-
     return this.prisma.user.update({
-      where: {id: dto.id},
-      data: {
-        email: dto.email,
-        password: dto.password,
-        firstName: dto.firstName,
-        lastName: dto.lastName,
-      }
+      where: { id: data.id as number },
+      data: data as Prisma.XOR<Prisma.UserUpdateInput, Prisma.UserUncheckedUpdateInput>
     })
   }
 }
