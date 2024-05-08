@@ -3,7 +3,7 @@ import {Field, InputType, Int} from "@nestjs/graphql";
 @InputType()
 export default class SaveUserDto {
     @Field(() => Int, { nullable: true })
-    id?: number;
+    id?: number|null;
 
     @Field()
     email: string;

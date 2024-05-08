@@ -12,15 +12,11 @@ export default class SaveUserUseCase implements UseCase<Promise<User>, [dto: Sav
 
     async handle(context: ContextualGraphqlRequest, dto: SaveUserDto): Promise<User> {
         try {
-            if( context.userId && context.userId !== dto.id ) {
+            if (dto.id && context.userId !== dto.id) {
                throw new ForbiddenException("Not authorized");
             }
 
-            if( dto.id && context.userId === dto.id ) {
-                return await this.userRepository.saveUser(context, dto);
-            }
-
-            return await this.userRepository.saveUser(context, dto);
+            return this.userRepository.saveUser(dto);
         } catch (error) {
             throw new ForbiddenException(error.message);
         }
