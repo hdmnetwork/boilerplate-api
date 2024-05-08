@@ -8,6 +8,7 @@ import GraphqlModule from '../Core/GraphqlModule';
 import {Repositories} from "./Repository/Repositories";
 import {Resolvers} from "./Resolver/Resolvers";
 import UseCaseFactory from "./UseCase/UseCaseFactory";
+import UncontextualUseCaseFactory from "./UseCase/UncontextualUseCaseFactory";
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import UseCaseFactory from "./UseCase/UseCaseFactory";
   controllers: [],
   providers: [
     UseCaseFactory,
+    UncontextualUseCaseFactory,
     ...Repositories,
     ...Resolvers
   ]
