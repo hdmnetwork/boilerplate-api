@@ -25,6 +25,7 @@ export interface AdapterService<Return, Parameters extends Array<any>> {
 }
 
 export type UseCase<Return, Parameters> = HandlerService<Return, [ContextualGraphqlRequest, ...Parameters]>
+
 export type UncontextualUseCase<Return, Parameters> = HandlerService<Return, [...Parameters]>
 
 export type ContextualGraphqlRequest = { userId: number, email: string, roles: string[], };
