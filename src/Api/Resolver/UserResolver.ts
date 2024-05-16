@@ -1,5 +1,5 @@
 import { UseGuards } from '@nestjs/common';
-import {Args, Mutation, Query, Resolver} from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { ContextualRequest } from '../../Core/Decorator/ContextualRequest';
 import GraphqlAuthGuard from '../../Core/Security/Guard/GraphqlAuthGuard';
 import { ContextualGraphqlRequest } from '../../index';
@@ -15,7 +15,7 @@ import UncontextualUseCaseFactory from "../UseCase/UncontextualUseCaseFactory";
 export default class UserResolver {
   constructor(
       private readonly serviceFactory: UseCaseFactory,
-      private readonly uncontextualFactory: UncontextualUseCaseFactory,
+      private readonly uncontextualUseCaseFactory: UncontextualUseCaseFactory,
   ) {}
 
   @UseGuards(GraphqlAuthGuard)
@@ -26,7 +26,7 @@ export default class UserResolver {
 
   @Mutation(() => User)
   async register(@Args('dto') dto: SaveUserDto) {
-    return (await this.uncontextualFactory.create(CreateUserUseCase)).handle(dto);
+    return (await this.uncontextualUseCaseFactory.create(CreateUserUseCase)).handle(dto);
   }
 
   @UseGuards(GraphqlAuthGuard)
