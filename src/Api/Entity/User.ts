@@ -1,5 +1,5 @@
 import { Field, GraphQLISODateTime, Int, ObjectType } from '@nestjs/graphql';
-import { ContextualGraphqlRequest } from '../../../index';
+import { ContextualGraphqlRequest } from '../../index';
 
 @ObjectType()
 export default class User {
@@ -10,6 +10,12 @@ export default class User {
   email: string;
 
   password: string;
+
+  @Field()
+  firstName: String;
+
+  @Field()
+  lastName: String;
 
   @Field(() => GraphQLISODateTime)
   createdAt: Date;

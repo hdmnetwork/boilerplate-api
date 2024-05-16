@@ -5,7 +5,10 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
 import { S3Module } from 'nestjs-s3';
 import CoreModule from '../Core/CoreModule';
 import GraphqlModule from '../Core/GraphqlModule';
-import UserModule from './User/UserModule';
+import {Repositories} from "./Repository/Repositories";
+import {Resolvers} from "./Resolver/Resolvers";
+import UseCaseFactory from "./UseCase/UseCaseFactory";
+import UncontextualUseCaseFactory from "./UseCase/UncontextualUseCaseFactory";
 
 @Module({
   imports: [
@@ -24,10 +27,13 @@ import UserModule from './User/UserModule';
         forcePathStyle: true
       }
     }),
-    UserModule
   ],
   controllers: [],
   providers: [
+    UseCaseFactory,
+    UncontextualUseCaseFactory,
+    ...Repositories,
+    ...Resolvers
   ]
 })
 export class ApiModule {}

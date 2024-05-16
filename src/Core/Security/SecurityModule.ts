@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import UserRepository from '../../Api/User/Repository/UserRepository';
+import UserRepository from '../../Api/Repository/UserRepository';
 import DatasourceModule from '../Datasource/DatasourceModule';
 import EventModule from '../Event/EventModule';
 import LoggingModule from '../Logging/LoggingModule';

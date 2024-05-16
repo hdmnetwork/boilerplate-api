@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import UserRepository from '../../../../Api/User/Repository/UserRepository';
+import UserRepository from '../../../../Api/Repository/UserRepository';
 import EmptyFieldException from './exceptions/EmptyFieldException';
 import InvalidUserPasswordException from './exceptions/InvalidUserPasswordException';
 
