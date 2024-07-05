@@ -1,5 +1,5 @@
 import { ForbiddenException, Injectable} from "@nestjs/common";
-import {ContextualGraphqlRequest, UseCase} from "../../../../index";
+import { ContextualGraphqlRequest, UseCase } from "../../../../index";
 import User from "src/Api/Entity/User"
 import UserRepository from "../../../Repository/UserRepository";
 import SaveUserDto from "./SaveUserDto";
