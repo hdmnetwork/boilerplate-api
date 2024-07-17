@@ -9,6 +9,7 @@ import {Repositories} from "./Repository/Repositories";
 import {Resolvers} from "./Resolver/Resolvers";
 import UseCaseFactory from "./UseCase/UseCaseFactory";
 import UncontextualUseCaseFactory from "./UseCase/UncontextualUseCaseFactory";
+import Utils from "./Utils/Utils";
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import UncontextualUseCaseFactory from "./UseCase/UncontextualUseCaseFactory";
   providers: [
     UseCaseFactory,
     UncontextualUseCaseFactory,
+    ...Utils,
     ...Repositories,
     ...Resolvers
   ]
