@@ -10,6 +10,10 @@ import TextHelper from './Helper/TextHelper';
 import UniqidGenerator from './Helper/UniqidGenerator';
 import LoggingModule from './Logging/LoggingModule';
 import SecurityModule from './Security/SecurityModule';
+import DayJsFactory from "./Factory/DayJsFactory";
+import Mailer from "./Mailing/Mailer";
+import MailMustacheRenderer from "./Mailing/MailMustacheRenderer";
+import UserRepository from "../Api/Repository/UserRepository";
 
 @Module({
   imports: [ ConfigModule, DatasourceModule, EventModule, LoggingModule, SecurityModule ],
@@ -24,16 +28,24 @@ import SecurityModule from './Security/SecurityModule';
     PromiseFactory,
     TextHelper,
     SecurityModule,
-    UniqidGenerator
+    UniqidGenerator,
+    DayJsFactory,
+    Mailer,
+    MailMustacheRenderer,
+    UserRepository,
   ],
   controllers: [],
   providers: [
     DateFactory,
     IbanValidator,
+    DayJsFactory,
     NumberFormatter,
     PromiseFactory,
     TextHelper,
-    UniqidGenerator
+    Mailer,
+    MailMustacheRenderer,
+    UniqidGenerator,
+    UserRepository,
   ]
 })
 export default class CoreModule {}

@@ -18,7 +18,23 @@ model File {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id               Int                    @id @default(autoincrement())
+  email            String                 @unique @db.VarChar(255)
+  password         String                 @db.VarChar(255)
+  firstName        String                 @db.VarChar(255)
+  lastName         String?                @db.VarChar(255)
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @default(now()) @updatedAt
+  recoveryPassword UserRecoveryPassword[]
+}
+
+model UserRecoveryPassword {
+  id        Int       @id @default(autoincrement())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  code      Int
+  createdAt DateTime  @default(now())
+  usedAt    DateTime?
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
   firstName String   @db.VarChar(255)
