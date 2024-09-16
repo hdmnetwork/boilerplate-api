@@ -33,12 +33,7 @@ model UserRecoveryPassword {
   user      User      @relation(fields: [userId], references: [id])
   userId    Int
   code      Int
-  createdAt DateTime  @default(now())
   usedAt    DateTime?
-  email     String   @unique @db.VarChar(255)
-  password  String   @db.VarChar(255)
-  firstName String   @db.VarChar(255)
-  lastName  String?  @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
 }
