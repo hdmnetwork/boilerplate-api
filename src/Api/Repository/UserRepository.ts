@@ -12,7 +12,7 @@ export default class UserRepository {
 
   async findById(id: number) {
     return this.prisma.user.findUnique({
-      where: { id },
+      where: { id }
     });
   }
 
@@ -30,7 +30,7 @@ export default class UserRepository {
       }
     });
   }
-
+  
   async saveUser(data: Prisma.XOR<Prisma.UserCreateInput, Prisma.UserUncheckedCreateInput> | Prisma.XOR<Prisma.UserUpdateInput, Prisma.UserUncheckedUpdateInput>) {
     if (!data.id) {
       return this.prisma.user.create({

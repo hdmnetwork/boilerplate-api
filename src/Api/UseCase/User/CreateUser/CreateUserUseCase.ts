@@ -15,7 +15,7 @@ export default class CreateUserUseCase implements UncontextualUseCase<Promise<Us
         try {
             const saltRounds= 10;
             dto.password = await bcrypt.hash(dto.password, saltRounds);
-
+          
             return this.userRepository.saveUser(dto);
         } catch (error) {
             throw new BadRequestException(error.message)
