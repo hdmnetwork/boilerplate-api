@@ -17,9 +17,24 @@ type Mutation {
   recoverPassword(dto: RecoverPasswordDto!): UserRecoveryPassword!
   register(dto: SaveUserDto!): User!
   saveUser(dto: SaveUserDto!): User!
+  setCurrentScoreByActivity(dto: [SetCurrentScoreByActivityDto!]!): [Score!]!
+}
+
+type Photo {
+  comment: String!
+  id: Int!
+  link: String!
+  user: User!
+  year: Year!
 }
 
 type Query {
+  getAllPhotos: [Photo!]!
+  getAllScores: [Score!]!
+  getAllScoresCurrent: [Score!]!
+  getAllUser: [User!]!
+  getAllUserParticipate: [User!]!
+  getAllYears: [Year!]!
   getLoggedUser: User!
   login(dto: AuthenticationDto!): String!
   refreshToken: String!
@@ -38,7 +53,33 @@ input SaveUserDto {
   firstName: String!
   id: Int
   lastName: String
+  login: String!
   password: String!
+}
+
+type Score {
+  aperitif: Int!
+  dessert: Int!
+  entreeChaude: Int!
+  entreeFroide: Int!
+  id: Int!
+  plat: Int!
+  sorbet: Int!
+  soupe: Int!
+  user: User!
+  year: Year!
+}
+
+input SetCurrentScoreByActivityDto {
+  aperitif: Int
+  dessert: Int
+  entreeChaude: Int
+  entreeFroide: Int
+  plat: Int
+  sorbet: Int
+  soupe: Int
+  userId: Int!
+  yearId: Int!
 }
 
 input TokenValidationDto {
@@ -50,7 +91,9 @@ type User {
   email: String!
   firstName: String!
   id: Int!
+  isParticipatingThisYear: Boolean!
   lastName: String!
+  login: String!
   updatedAt: DateTime!
 }
 
@@ -64,4 +107,10 @@ type UserRecoveryPassword {
 input ValidateRecoveryPasswordCodeDto {
   code: Float!
   email: String!
+}
+
+type Year {
+  current: Boolean!
+  id: Int!
+  year: String!
 }

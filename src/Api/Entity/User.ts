@@ -1,27 +1,33 @@
-import { Field, GraphQLISODateTime, Int, ObjectType } from '@nestjs/graphql';
-import { ContextualGraphqlRequest } from '../../index';
+import {Field, GraphQLISODateTime, Int, ObjectType} from '@nestjs/graphql';
+import {ContextualGraphqlRequest} from '../../index';
 
 @ObjectType()
 export default class User {
-  @Field(() => Int)
-  id: number;
+    @Field(() => Int)
+    id: number;
 
-  @Field()
-  email: string;
+    @Field()
+    email: string;
 
-  password: string;
+    @Field()
+    login: string;
 
-  @Field()
-  firstName: String;
+    password: string;
 
-  @Field()
-  lastName: String;
+    @Field()
+    firstName: string;
 
-  @Field(() => GraphQLISODateTime)
-  createdAt: Date;
+    @Field()
+    lastName: string;
 
-  @Field(() => GraphQLISODateTime)
-  updatedAt: Date;
+    @Field()
+    isParticipatingThisYear: boolean;
 
-  context?: ContextualGraphqlRequest;
+    @Field(() => GraphQLISODateTime)
+    createdAt: Date;
+
+    @Field(() => GraphQLISODateTime)
+    updatedAt: Date;
+
+    context?: ContextualGraphqlRequest;
 }

@@ -9,6 +9,9 @@ export default class SaveUserDto {
     email: string;
 
     @Field()
+    login: string;
+
+    @Field()
     password: string;
 
     @Field()
