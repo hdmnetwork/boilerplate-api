@@ -1,27 +1,25 @@
 import { Field, GraphQLISODateTime, Int, ObjectType } from '@nestjs/graphql';
-import { ContextualGraphqlRequest } from '../../index';
 
 @ObjectType()
-export default class User {
+export default class FileEntity {
   @Field(() => Int)
   id: number;
 
   @Field()
-  email: string;
-
-  password: string;
+  uri: string;
 
   @Field()
-  firstName: String;
+  initialFilename: string;
 
   @Field()
-  lastName: String;
+  filename: string;
+
+  @Field()
+  path: string;
 
   @Field(() => GraphQLISODateTime)
   createdAt: Date;
 
   @Field(() => GraphQLISODateTime)
   updatedAt: Date;
-
-  context?: ContextualGraphqlRequest;
 }

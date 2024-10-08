@@ -1,5 +1,6 @@
 Object.assign(global, { WebSocket: require('ws') });
 import { NestFactory } from '@nestjs/core';
+import { graphqlUploadExpress } from 'graphql-upload';
 import { json } from 'express';
 import { ApiModule } from './Api/ApiModule';
 import { ExceptionCatcher } from './Core/ExceptionCatcher';
@@ -20,6 +21,7 @@ async function bootstrapApi() {
   app.useLogger(app.get(ConsoleLogger));
 
   app.enableCors({ origin: '*' });
+  app.use(graphqlUploadExpress({ maxFileSize: 15000000, maxFiles: 1 }));
   app.use(json({ limit: '1mb' }));
 
   app.useGlobalFilters(new ExceptionCatcher(app.get(ConsoleLogger)));
